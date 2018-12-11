@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block styles %}
+    <style>
+    .jumbotron {
+      text-align: center;
+      height: 10px;
+    }
+    
+    </style>
+    
+{% endblock %}
+
+{% block title %}{{ post.title|title }} | {{ block.super }}{% endblock %}
+
+{% block jumbotron %}
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+      </div>
+    </main>
+{% endblock %}
+
+
+
+{% block content %}
+{% include 'users/alerts.html' %}
+
+
+  <h2>{{ post.title|title }}</h2>
+  <small>Post created by: {{ post.author|capfirst }}</small>
+  <hr>
+  
+
+  <div class="row gallery">
+        {% if post.video %}
+        <video src="{{ post.video.url }}" alt="Image Not Found" class="img-thumbnail" controls>
+          <p>Your browser does not surpport video</p>
+        </video><br>
+        
+        {% endif %} 
+        <br>
+        <div>
+    {% if post.image %}
+      <div class="col-md-4">
+        <a href="{{ post.image.url }}" target="_blank"> <img src="{{ post.image.url }}" alt="Image Not Found" class="img-thumbnail"></a>
+      </div>
+    {% endif %}
+  </div>
+    {% if post.image2 %}
+      <div class="col-md-4">
+        <a href="{{ post.image2.url }}" target="_blank"> <img src="{{ post.image2.url }}" alt="Image Not Found" class="img-thumbnail"></a>
+      </div>
+    {% endif %}
+    {% if post.image3 %}
+      <div class="col-md-4">
+        <a href="{{ post.image3.url }}" target="_blank"> <img src="{{ post.image3.url }}" alt="Image Not Found" class="img-thumbnail"></a>
+      </div>
+    {% endif %}
+    {% if post.image4 %}
+      <div class="col-md-3">
+        <a href="{{ post.image4.url }}" target="_blank"> <img src="{{ post.image4.url }}" alt="Image Not Found" class="img-thumbnail"></a>
+      </div>
+    {% endif %}
+  </div>
+
+  <p>{{ post.body|capfirst }}</p>
+
+<div id="like-section">
+  {% include 'users/like_section.html' %}
+</div>
+
+<div id="favourite-section">
+  {% if is_favourite %}
+  <a href="{% url 'users:favourite_post' id=post.id %}">
+    <i class="fas fa-heart fa-lg"></i>
+  </a>
+  {% else %}
+  <a href="{% url 'users:favourite_post' id=post.id %}">
+    <i class="far fa-heart fa-lg"></i>
+  </a>
+  {% endif %}
+</div>
+
+
+{% if post.author == request.user %}
+
+<div class="section-1" style="float:right;">
+
+  <a href="{% url 'users:post_edit' id=post.id %}">
+    <button type="button" class="btn btn-outline-success">Edit</button>
+  </a>
+  <a href="{% url 'users:post_delete' id=post.id %}" id="delete">
+    <button type="button" class="btn btn-danger">Delete</button>
+  </a>
+</div>
+{% endif %}
+
+
+<br><br>
+<hr>
+
+{% if not post.restrict_comment %}
+  <div class="main-comment-section">
+    {% include 'users/comments.html' %}
+  </div>
+{% endif %}
+
+{% endblock %}

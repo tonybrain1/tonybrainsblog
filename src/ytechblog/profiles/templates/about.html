@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}About {{ block.super }}{% endblock %}
+
+
+
+{% block jumbotron %}
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 id='grw' class="display-3">About Us!</h1>
+         
+        </div>
+      </div>
+    </main>
+{% endblock %}
+
+{% block content %}
+      <div class="container">
+          <!-- Example row of columns -->
+          
+            <div class="row">
+                <div class='col-md-6 col-md-offset-3'">
+                    <div class="articles">
+                          <div class="article">
+                                       <p>we are located at bla bla bla, bla bla bla</p>
+                                       <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+                            </div>
+                    </div>
+                </div>
+              
+                     
+          </div>
+
+          <hr>
+
+        </div> <!-- /container -->
+{% endblock %}

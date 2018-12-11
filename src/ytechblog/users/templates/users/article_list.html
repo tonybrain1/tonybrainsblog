@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block styles %}
+    <style>
+    .jumbotron {
+      text-align: center;
+      
+      
+    }
+
+
+    </style>
+    
+{% endblock %}
+
+{% block title %}Home| {{ block.super }}{% endblock %}
+
+
+
+{% block jumbotron %}
+    <main role="main">
+      
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron" width="100%">
+
+        <div class="row">
+          <div class="col-md">
+        <img id="image" src="{{ w }}" data-url="{{ w }}" alt="Image Not Found" class="img-thumbnail" width="100%">
+        
+        <small id="image1" data-url="{{ v }}"></small>
+      </div>
+      </div>
+        
+          
+       
+      </div>
+    </main>
+{% endblock %}
+
+
+
+
+{% block post %}
+    {% include 'users/alerts.html' %}
+
+<div class="container">
+<div class="row front">
+  {% for p in posts %}
+    <div class='col-md-7 back'>
+      <div id="height1" class="img-thumbnail">
+        <div id="height2" class="img-responsive"><a href="{{ p.get_absolute_url }}"></a></div><br>
+        <h4 class="info"><a href="{{ p.get_absolute_url }}">{{ p.snippet1|title }}</a></h4><br>
+        
+        <p class="info1">{{ p.snippet|capfirst }}</p><br>
+        <p id="fix"><small  >Posted by: {{ p.author|capfirst }} | {{ p.created }}</small></p><br>
+      </div> <!-- you can use style="float:right" inside of the small tag to float the element right-->
+      <br>
+    </div>
+
+
+
+
+  {% empty %}
+      <div class="container-fluid">
+        <h3>No Posts Found having search query "{{ request.GET.q }}"</h3>
+      </div>
+
+  {% endfor %}
+
+
+
+<div class="col-md-4 boxx">
+  <div class="row front1">
+  
+    {% for p in posts %}
+    <div class='col-md-12 back1'>
+      <div id="height1" class="img-thumbnail">
+        <div id="height2" class="img-responsive"><a href="{{ p.get_absolute_url }}"></a></div><br>
+        <h4 class="info"><a href="{{ p.get_absolute_url }}">{{ p.snippet1|title }}</a></h4><br>
+        
+        <p class="info1">{{ p.snippet|capfirst }}</p><br>
+        <small id="fix" >Posted by: {{ p.author|capfirst }} | {{ p.created }}</small><br>
+      </div> <!-- you can use style="float:right" inside of the small tag to float the element right-->
+      <br>
+    </div>
+
+
+
+    
+  {% empty %}
+      <div class="container-fluid">
+        <h3>No Posts Found having search query "{{ request.GET.q }}"</h3>
+      </div>
+
+  {% endfor %}
+</div>
+</div>        
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+<ul class="pagination">
+  {% if posts.has_previous %}
+    <li class="page-item">
+      <a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a>
+    </li>
+  {% endif %}
+
+  {% for p in page_range %}
+    {% if posts.number == p %}
+      <li class="page-item active">
+        <a href="?page={{ p }}" class="page-link">{{ p }}</a>
+      </li>
+    {% else %}
+      <li class="page-item">
+        <a href="?page={{ p }}" class="page-link">{{ p }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+
+  {% if posts.has_next %}
+    <li class="page-item">
+      <a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a>
+    </li>
+  {% endif %}
+</ul>
+
+<hr>
+{% endblock %}
+
+{% block content %} 
+
+
+<div class="col-md-4 boxxx">
+  <div class="row front2">
+  
+    
+
+
+
+   
+</div>
+</div>        
+
+
+
+
+
+        
+{% endblock %}
+
+

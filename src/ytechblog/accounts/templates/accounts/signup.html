@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block styles %}
+    <style>
+    h1, ul {
+    	text-align: left;
+    }
+    </style>
+    
+{% endblock %}
+
+{% block jumbotron %}
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Signup</h1> 
+        </div>
+      </div>
+    </main>
+{% endblock %}
+
+{% block container %}
+	    <div class="container">
+	        <!-- Example row of columns -->
+	        
+		        <div class="row">
+		            <div class='col-md-6 col-md-offset-3'">
+		          	    <div class="articles">
+		          		        <div class="article">
+									    <form class="site-form" action="/accounts/signup/" method="post">
+									    	{% csrf_token %}
+									    	{{ form|crispy }}
+									    	<input type="submit" value="Signup">
+									    </form>
+		                        </div>
+		                </div>
+		            </div>
+	            
+	                   
+	        </div>
+
+	        <hr>
+
+	      </div>
+{% endblock %}

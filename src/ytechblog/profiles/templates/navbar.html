@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="{% url 'contact' %}">Y-Tech-Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+        {% url 'article_list' as article_list %}
+        {% url 'about' as about %}
+        {% url 'contact' as contact %}
+          <li {% if request.path == article_list %} class="nav-item active" {% endif %}>
+            <a class="nav-link" href="{% url 'article_list' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li {% if request.path == about %} class="nav-item active" {% endif %}>
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+          <li {% if request.path == contact %} class="nav-item active" {% endif %}>
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+          </li>
+          
+        </ul>
+        {% if not request.user.is_authenticated %}
+            
+            <a id="dropdown01" class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+          
+            
+        {% else %}
+            <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{% url 'articles' %}" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username|capfirst }}</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              {% if not request.user.is_authenticated %}
+              <a  class="dropdown-item" href="{% url 'accounts:login' %}">Login</a>
+              {% else %}
+              <a class="dropdown-item" href="{% url 'users:edit_profile' %}">My Profile</a>
+              <!--<a class="dropdown-item" href="{% url 'users:post_create' %}">Create Post</a>-->
+              
+              <a class="dropdown-item" href="{% url 'user_logout' %}">Logout</a>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+        <form class="form-inline my-2 my-lg-0" action="{% url 'users:article_list' %}">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='q'>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
