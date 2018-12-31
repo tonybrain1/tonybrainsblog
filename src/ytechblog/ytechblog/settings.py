@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,7 +31,7 @@ SECRET_KEY = '-0l&1i5x*g9-z8m3!l!_ubqkfqv8e&tzlyfr8=07*+*8(%rt!u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['goodiebagapp.herokuapp.com']
 
 
 # Application definition
@@ -155,13 +156,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if DEBUG:
-    MEDIA_URL = '/media/'
-    STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static-only")
-    MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media")
-    STATICFILES_DIRS = (
-        os.path.join(os.path.dirname(BASE_DIR), "static", "static"),
-    )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -171,6 +165,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 LOGIN_REDIRECT_URL = 'article_list'
+
+
+# Configure Django App for Heroku.
+
+django_heroku.settings(locals())
+
+
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '61695347607-ip2fcoqo7c4tosf8cjq1vraqmcoanuo0.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'oGAyH6EvUgCEiEIN5PJt6kmN'
 

@@ -32,6 +32,16 @@ def flight(request, flight_id):
 	return render(request, "flight.html", context)
 
 def articles(request):
+
+
+        headers = {
+            'Authorization': 'Bearer SECRET_KEY',
+            'Content-Type': 'application/json',
+        }
+        
+        data = {"reference": reference, "amount": amount, "email": email}
+        
+        response = requests.post('https://api.paystack.co/transaction/initialize', headers=headers, json=data)
 	context = {}
 	template = 'articles.html'
 	return render(request,template,context)
