@@ -168,7 +168,6 @@ LOGIN_REDIRECT_URL = 'article_list'
 
 
 # Configure Django App for Heroku.
-django_heroku.settings(locals())
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
