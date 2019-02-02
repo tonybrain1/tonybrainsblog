@@ -298,7 +298,7 @@ def user_login(request):
     context = {
         'form': form,
     }
-    return render(request, 'accounts/login.html', context)
+    return render(request, 'users/login.html', context)
 
 
 def user_logout(request):

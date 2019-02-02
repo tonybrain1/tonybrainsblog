@@ -27,8 +27,9 @@ h1, {
 .jumbotron {
     padding: 2rem 1rem;
     margin-bottom: 2rem;
-    background-color: #9dafa1;
-    border-radius: .3rem;
+    background-color: #2b2a2a;
+    border-radius: 0rem;
+
 }
 
 a {
@@ -91,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a:hover {
-    color: #28a745;
+    color: #064615;
     text-decoration: underline;
 }
 
@@ -159,50 +160,57 @@ a:hover {
 }
 
 h2 {
-  color: #1cd646;  
+  color: #1cd646;
 }
 
 
 #fix {
-   
-    color: #07cc34;
+
+    color: #09561b;
+
     text-align: center;
+    margin-bottom: 10px;
     position: relative;
-    margin-bottom: 0px;
+
+
+
 }
 .info {
-    
+
     text-align: center;
 }
 
 .info1 {
-    
-    background: gray;
+
+    /*background: gray;*/
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    font-size: 1.1rem;
+    font-weight: 400;
+
 }
 .container {
     position: relative;
     left:auto;
     right:auto;
-    background:yellow;
+
 }
 .back {
     position: relative;
-    left: auto;
-    right: 10%;
-    background: blue;
+
+    /*background: blue;*/
     margin: 20px;
     margin-left: auto;
     margin-right: auto;
+
 }
 
 .front {
     position: relative;
     left: auto;
     right: auto;
-    background: green;
+    /*background: green;*/
 }
 #height1 {
     margin:20px;
@@ -211,29 +219,118 @@ h2 {
 .back1 {
     position: relative;
     top:20px;
-    background: pink;
+    /*background: pink;*/
 }
 
 
-.front1 {
+/*.front1 {
     position: relative;
-    background: gray;
-}
+    background: red;
+}*/
 .boxx {
     position: absolute;
-    background:orange;
-    z-index: 8;
+    /*background:orange;*/
     float:right;
-    right:30px;
-    width:25%;
+    right:0px;
+    width:30%;
 }
 
-.boxxx {
+/*.boxxx {
     position: absolute;
     background:orange;
-    z-index: 8;
     float:right;
     left:0px;
     width:15%;
     height:100%;
+}*/
+
+.price {
+    font-size: 1.1rem;
+    font-weight: 400;
 }
+.prod {
+    color: #fb293d;
+}
+
+.prod:hover {
+    color: #c7a231;
+}
+.prod:hover {
+    color: #9c434b;
+}
+.display-4 {
+    font-size: 2.0rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+body, html {
+    width: 100%;
+}
+
+.display-3 {
+    color: white;
+}
+.display-4 {
+    color: white;
+}
+
+.navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand:hover {
+    color: #ffc107;
+}
+
+#height2 {
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+}
+#imm {
+    background:black;
+    position: relative;
+    left: auto;
+    right: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#immmm {
+    display: block;
+    background:red;
+    position: relative;
+    left: auto;
+    right: auto;
+    Width :90%;
+    margin-top: auto;
+    margin-bottom:auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left :auto;
+    padding-right :auto;
+
+}
+
+#ibbb {
+    display: block;
+    background:green;
+    position: relative;
+    left: auto;
+    right: auto;
+
+    /*Width :40%;*/
+    height: 200px;
+
+    margin-top: auto;
+    margin-bottom:auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left :auto;
+    padding-right :auto;
+
+}
+
+#colorr {
+    color: red;
+    font-weight: bold;
+}
+
+

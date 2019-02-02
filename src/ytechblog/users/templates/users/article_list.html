@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
@@ -6,35 +7,26 @@
     <style>
     .jumbotron {
       text-align: center;
-      
-      
+
+
     }
 
 
     </style>
-    
+
 {% endblock %}
 
-{% block title %}Home| {{ block.super }}{% endblock %}
+{% block title %}Home | {{ block.super }}{% endblock %}
 
 
 
 {% block jumbotron %}
     <main role="main">
-      
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron" width="100%">
 
-        <div class="row">
-          <div class="col-md">
-        <img id="image" src="{{ w }}" data-url="{{ w }}" alt="Image Not Found" class="img-thumbnail" width="100%">
-        
-        <small id="image1" data-url="{{ v }}"></small>
-      </div>
-      </div>
-        
-          
-       
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+          <h6 id="different" class="display-4">Advertise your product(s) to the world on our products platform. If you want your product(s) uploaded on our products page, click  <a class="prod" href="{% url 'contact' %}">Here</a> to contact us.
+          </h6>
       </div>
     </main>
 {% endblock %}
@@ -46,49 +38,35 @@
     {% include 'users/alerts.html' %}
 
 <div class="container">
-<div class="row front">
+<div class="row">
   {% for p in posts %}
-    <div class='col-md-7 back'>
+    <div class="col-md-12">
       <div id="height1" class="img-thumbnail">
-        <div id="height2" class="img-responsive"><a href="{{ p.get_absolute_url }}"></a></div><br>
-        <h4 class="info"><a href="{{ p.get_absolute_url }}">{{ p.snippet1|title }}</a></h4><br>
-        
-        <p class="info1">{{ p.snippet|capfirst }}</p><br>
-        <p id="fix"><small  >Posted by: {{ p.author|capfirst }} | {{ p.created }}</small></p><br>
+          {% if p.image %}
+
+             <div id="height2" class="img-responsive">
+                <a id="immm" href="{{ p.get_absolute_url }}">
+                    <div id="imm">
+                        <img id="ibbb" src="{{ p.image.url }}" alt="Image Not Found" class="img-thumbnail">
+                    </div>
+
+                </a>
+
+            </div>
+        {% endif %}
+        <br>
+
+        <div>
+
+        <h4 class="info"><a href="{{ p.get_absolute_url }}">{{ p.title|linebreaks }}</a></h4><br>
+
+        <p style="text-align:center"> {{ p.snippet }} </p><br>
+
+        <p id="fix"><small>Posted by: {{ p.author|capfirst }} | {{ p.created }}</small></p><br>
+        </div>
       </div> <!-- you can use style="float:right" inside of the small tag to float the element right-->
       <br>
     </div>
-
-
-
-
-  {% empty %}
-      <div class="container-fluid">
-        <h3>No Posts Found having search query "{{ request.GET.q }}"</h3>
-      </div>
-
-  {% endfor %}
-
-
-
-<div class="col-md-4 boxx">
-  <div class="row front1">
-  
-    {% for p in posts %}
-    <div class='col-md-12 back1'>
-      <div id="height1" class="img-thumbnail">
-        <div id="height2" class="img-responsive"><a href="{{ p.get_absolute_url }}"></a></div><br>
-        <h4 class="info"><a href="{{ p.get_absolute_url }}">{{ p.snippet1|title }}</a></h4><br>
-        
-        <p class="info1">{{ p.snippet|capfirst }}</p><br>
-        <small id="fix" >Posted by: {{ p.author|capfirst }} | {{ p.created }}</small><br>
-      </div> <!-- you can use style="float:right" inside of the small tag to float the element right-->
-      <br>
-    </div>
-
-
-
-    
   {% empty %}
       <div class="container-fluid">
         <h3>No Posts Found having search query "{{ request.GET.q }}"</h3>
@@ -96,18 +74,7 @@
 
   {% endfor %}
 </div>
-</div>        
-
-
-
-
-
-
 </div>
-</div>
-
-
-
 
 
 <ul class="pagination">
@@ -136,28 +103,39 @@
   {% endif %}
 </ul>
 
-<hr>
-{% endblock %}
 
-{% block content %} 
-
-
-<div class="col-md-4 boxxx">
-  <div class="row front2">
-  
-    
-
-
-
-   
-</div>
-</div>        
-
-
-
-
-
-        
 {% endblock %}
 
 
+{% block script %}
+    <script type="text/javascript">
+      var myImage = document.getElementById("image");
+      var x = document.getElementById("image").getAttribute("data-url");
+      var y = document.getElementById("image1").getAttribute("data-url");
+      var arrayImage = [x, y];
+      var imageIndex = 0;
+
+
+      function changeImage(){
+        myImage.setAttribute("src", arrayImage[imageIndex]);
+        imageIndex++;
+
+        if(imageIndex >= arrayImage.length){
+          imageIndex = 0;
+        }
+
+
+      }
+
+      setInterval(changeImage, 3000);
+    </script>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+
+{% endblock %}

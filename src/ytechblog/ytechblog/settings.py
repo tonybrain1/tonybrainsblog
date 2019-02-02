@@ -15,9 +15,10 @@ import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ogokeanthony187@gmail.com'
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = 'chinonso1990'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 
@@ -31,7 +32,7 @@ SECRET_KEY = '-0l&1i5x*g9-z8m3!l!_ubqkfqv8e&tzlyfr8=07*+*8(%rt!u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['goodiebagapp.herokuapp.com']
+ALLOWED_HOSTS = ['guddiebagapp.herokuapp.com']
 
 
 # Application definition
@@ -161,7 +162,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 SITE_ID = 1
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 
 
 LOGIN_REDIRECT_URL = 'article_list'

@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
+{% block styles %}
+    <style>
+
+    h1, ul {
+    	text-align: left;
+    }
+    </style>
+    
+{% endblock %}
+
+{% block title %}Login To Report Crime {{ block.super }}{% endblock %}
+
 {% block jumbotron %}
     <main role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Login</h1>
+          <h1 class="display-3">Login</h1> 
         </div>
       </div>
     </main>
@@ -15,48 +27,43 @@
 
 
 {% block container %}
-      <div class="container">
-          <!-- Example row of columns -->
-          
-            <div class="row">
-                <div class='col-md-6 col-md-offset-3'">
-                    <div class="articles">
-                          <div class="article">
-                                      {% if confirm_message %}
-                                      <p> {{ confirm_message}} </p> <!-- title and confirm msg in contacts views.py --> 
-                                      {% endif %}
-
-                                      {% if form %}
-                                          <form method="post">
-                                              {% csrf_token %}
-                                              {{ form|crispy }}
-                                              {% if request.GET.next %}
-                                                <input type="hidden" name="next" value="{{ request.GET.next }}">
-                                              {% endif %}
-                                                <small>
-                                                  <a href="{% url 'register' %}">Register</a> |
-                                                  <a href="{% url 'password_reset' %}">Forgotten Your Password?</a>
+	    <div class="container">
+	        <!-- Example row of columns -->
+	        
+		        <div class="row">
+		            <div class='col-md-6 col-md-offset-3'">
+		          	    <div class="articles">
+		          		        <div class="article">
+									    
+										    <form class="site-form" action="{% url 'accounts:login' %}" method="post">
+										    	{% csrf_token %}
+										    	{{ form|crispy }}
+										    	{% if request.GET.next %}
+										    	    <input type="hidden" name="next" value="{{ request.GET.next }}">
+										    	{% endif %}
+										    	<small>
+                                                  <a class="red" href="{% url 'register' %}">Register</a> |
+                                                  <a class="red" href="{% url 'password_reset' %}">Forgotten Your Password?</a>
                                                 </small>
                                                 <br>
-
-                                              <input type="submit" value="Login" class="btn btn-outline-success">
-                                              <p>-- OR --</p>
+										    	<input type="submit" value="Login" class="btn btn-outline-success">
+										    	<p>-- OR --</p>
                                               <a href="{% url 'social:begin' 'github' %}">
                                                 <button type="button" name="button" class="btn btn-primary">Github</button>
                                               </a>
                                               <a href="{% url 'social:begin' 'google-oauth2' %}">
                                                 <button type="button" name="button" class="btn btn-danger">Google+</button>
                                               </a>
-                                            </form>
-                                      {% endif %}
-                            </div>
-                    </div>
-                </div>
-              
-                     
-          </div>
+										    	
+										    </form>
+					                        </div>
+		                </div>
+		            </div>
+	            
+	                   
+	        </div>
 
-          <hr>
+	        <hr>
 
-        </div> <!-- /container -->
+	      </div>
 {% endblock %}

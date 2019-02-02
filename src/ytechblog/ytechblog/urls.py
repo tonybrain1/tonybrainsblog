@@ -42,14 +42,25 @@ urlpatterns = [
     #path('', include('users.urls', namespace='users'), name='home'),
     #url('users/', include('users.urls'), name='comment'),
 
-    url(r'^accounts/', include('accounts.urls')),
+    #url(r'^accounts/', include('accounts.urls')),
     #url(r'^(?P<slug>[-\w]+)/$', user_views.article_details, name='detail'),
 
     url(r'^$', user_views.article_list, name="article_list"),
     url(r'^users/', include('users.urls', namespace="users")),
-    #url(r'^login/$', user_views.user_login, name="user_login"),
+    url(r'^login/$', user_views.user_login, name="user_login"),
     url(r'^logout/$', user_views.user_logout, name="user_logout"),
     url(r'^register/$', user_views.register, name="register"),
+
+    #path version Password Reset Url's
+    #path('password-reset/',
+        #auth_views.PasswordResetView.as_view(),
+        #name='password_reset'),
+    #path('password-reset/done/',
+        #auth_views.PasswordResetDoneView.as_view(),
+        #name='password_reset_done'),
+    #path('password-reset-confirm/<uidb64>/<token>/',
+        #auth_views.PasswordResetConfirmView.as_view(),
+        #name='password_reset_confirm'),
 
     # Password Reset Url's
     #url(r'^password-reset/$', auth_views.PasswordResetView, name="password_reset"),
